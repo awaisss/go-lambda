@@ -1,14 +1,15 @@
-var child_process = require('child_process');
+var exec = require('child_process').exec;
 
-exports.handler = function(event,context) {
-	var proc = child_process.spawn('./main',[JSON.stringify(event)], {stdio:'inherit'});
+exports.handler = (event, context, callback) => {
+    if (!event.cmd) {
+        return callback('Please specify a command to run as event.cmd');
+    }
+    var child = exec(event.cmd, (error) => {
+        // Resolve with result of process
+        callback(error, 'Process complete!');
+    });
 
-	proc.on('close',function(code){
-		if(code != 0){
-			return context.done(new Error("process exited with non zero status code"));
-		}
-		context.done(null);
-
-	});
-
-}
+    // Log process stdout and stderr
+    child.stdout.on('data', console.log);
+    child.stderr.on('data', console.error);
+};
