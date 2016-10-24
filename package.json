@@ -1,0 +1,22 @@
+{
+  "name": "go-lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node main.js",
+  "scripts": {
+    "test": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awaisss/go-lambda.git"
+  },
+  "author": "awais ilyas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/awaisss/go-lambda/issues"
+  },
+  "homepage": "https://github.com/awaisss/go-lambda#readme",
+  "dependencies": {
+    "child_process": "^1.0.2"
+  }
+}
